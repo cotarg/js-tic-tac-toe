@@ -1,12 +1,7 @@
 function TicTacToe() {
+  this.turns: 0
 
-}
-
-// A, B, C are columns; 1, 2, 3 are rows.
-// Therefore a1 is top left, and b3 is bottom right
-
-TicTacToe.prototype = {
-  board: {
+  this.board = {
     a1: {player: "c", locked: false},
     b1: {player: "c", locked: false},
     c1: {player: "c", locked: false},
@@ -16,14 +11,20 @@ TicTacToe.prototype = {
     a3: {player: "c", locked: false},
     b3: {player: "c", locked: false},
     c3: {player: "c", locked: false}
-  },
+  };
 
-  plays: {
+  this.plays = {
     playerOne: [],
     playerTwo: []
-  },
+  };
 
-  turns: 0
+}
+
+// A, B, C are columns; 1, 2, 3 are rows.
+// Therefore a1 is top left, and b3 is bottom right
+
+TicTacToe.prototype = {
+  
 }
 
 
@@ -39,9 +40,11 @@ TicTacToe.prototype.takeTurn = function(spaceAddress) {
 TicTacToe.prototype._spaceChecker = function (spaceAddress) {
   if (this[board][spaceAddress] == false) {
     return true
+  } else {
+    return false
   }
 }
 
 TicTacToe.prototype._lockSpace = function (spaceAddress) {
-  
+  this.board[spaceAddress][locked] = true
 }
