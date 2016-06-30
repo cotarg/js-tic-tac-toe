@@ -16,7 +16,7 @@ TicTacToe.prototype = {
     a3: {player: "c", locked: false},
     b3: {player: "c", locked: false},
     c3: {player: "c", locked: false}
-  }
+  },
 
   plays: {
     playerOne: [],
@@ -25,5 +25,5 @@ TicTacToe.prototype = {
 }
 
 TicTacToe.prototype.takeTurn = function() {
-  
+
 }
