@@ -1,5 +1,5 @@
 function TicTacToe() {
-  this.turns: 0
+  this.turns = 0
 
   this.board = {
     a1: {player: "c", locked: false},
@@ -12,12 +12,6 @@ function TicTacToe() {
     b3: {player: "c", locked: false},
     c3: {player: "c", locked: false}
   };
-
-  this.plays = {
-    playerOne: [],
-    playerTwo: []
-  };
-
 }
 
 // A, B, C are columns; 1, 2, 3 are rows.
@@ -33,8 +27,9 @@ TicTacToe.prototype.takeTurn = function(spaceAddress) {
   if (this._spaceChecker == true) {
     this._lockSpace(spaceAddress)
     this._updatePlayer(spaceAddress)
+    this._checkWin()
+    this.turns++
   }
-
 }
 
 TicTacToe.prototype._spaceChecker = function (spaceAddress) {
@@ -47,4 +42,16 @@ TicTacToe.prototype._spaceChecker = function (spaceAddress) {
 
 TicTacToe.prototype._lockSpace = function (spaceAddress) {
   this.board[spaceAddress][locked] = true
+}
+
+TicTacToe.prototype._updatePlayer = function (spaceAddress) {
+  if (this.turns % 2 == 0) {
+    this.board[spaceAddress][player] = 'a'
+  } else {
+    this.board[spaceAddress][player] = 'b'
+  }
+}
+
+TicTacToe.prototype._checkWin = function () {
+  
 }
