@@ -21,9 +21,19 @@ TicTacToe.prototype = {
   plays: {
     playerOne: [],
     playerTwo: []
-  }
+  },
+
+  turns: 0
 }
 
+
+// what happens during a turn
 TicTacToe.prototype.takeTurn = function() {
 
+}
+
+TicTacToe.prototype.spaceChecker = function (spaceAddress) {
+  if (this[board][spaceAddress] == false) {
+    return true
+  }
 }

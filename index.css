@@ -1,8 +1,13 @@
-html {
-  
+* {
+  box-sizing: border-box;
 }
 
-button {
+html {
+  font-family: 'American Typewriter', courier, sans-serif;
+  font-size: 1rem; 
+}
+
+.tic-tac-toe > p > button {
   font-size: 10rem;
   width: 10rem;
   height: 10rem;
@@ -10,3 +15,4 @@ button {
   padding: 0;
   border: 3px solid
 }
+
