@@ -28,12 +28,20 @@ TicTacToe.prototype = {
 
 
 // what happens during a turn
-TicTacToe.prototype.takeTurn = function() {
+TicTacToe.prototype.takeTurn = function(spaceAddress) {
+  if (this._spaceChecker == true) {
+    this._lockSpace(spaceAddress)
+    this._updatePlayer(spaceAddress)
+  }
 
 }
 
-TicTacToe.prototype.spaceChecker = function (spaceAddress) {
+TicTacToe.prototype._spaceChecker = function (spaceAddress) {
   if (this[board][spaceAddress] == false) {
     return true
   }
+}
+
+TicTacToe.prototype._lockSpace = function (spaceAddress) {
+  
 }
