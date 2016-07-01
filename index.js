@@ -11,11 +11,15 @@ $(document).on('ready', function () {
 
         game.takeTurn(this.dataset.square)
 
-        if (game.turns === 0 || game.turns % 2 === 1) {
+        if (game.turns === 0) {
           $(this).text('👸')
-        } else {
+        } else if (game.turns % 2 === 1) {
+          $(this).text('👸')
+        }
+         else if (game.board[this.dataset.square]['player'] === 'b') {
           $(this).text('🐲')
         }
         console.log(game.turns)
+        console.log(game.board[this.dataset.square]['locked'])
       })
     })

@@ -14,15 +14,15 @@ function TicTacToe() {
 //   }
 
   this.board = {
-    a1: {player: "c", locked: false},
-    b1: {player: "c", locked: false},
-    c1: {player: "c", locked: false},
-    a2: {player: "c", locked: false},
-    b2: {player: "c", locked: false},
-    c2: {player: "c", locked: false},
-    a3: {player: "c", locked: false},
-    b3: {player: "c", locked: false},
-    c3: {player: "c", locked: false}
+    a1: {player: null, locked: false},
+    b1: {player: null, locked: false},
+    c1: {player: null, locked: false},
+    a2: {player: null, locked: false},
+    b2: {player: null, locked: false},
+    c2: {player: null, locked: false},
+    a3: {player: null, locked: false},
+    b3: {player: null, locked: false},
+    c3: {player: null, locked: false}
   };
 }
 
@@ -36,7 +36,7 @@ TicTacToe.prototype = {
 
 // what happens during a turn
 TicTacToe.prototype.takeTurn = function(spaceAddress) {
-  if (this.board[spaceAddress]['locked'] == false ){
+  if (this.board[spaceAddress]['locked'] === false ){
       this._lockSpace(spaceAddress)
       this._updatePlayer(spaceAddress)
       this.turns++
@@ -66,9 +66,48 @@ TicTacToe.prototype._updatePlayer = function (spaceAddress) {
   }
 }
 
+TicTacToe.prototype.checkWin = function () {
+  if (this.turns < 5) {
+    return false
+  } else if (this.board['a1']['player'] !== 'c') {
+    if (this.board['a1']['player'] === ((this.board['b1']['player'] && this.board['c1']['player']) || (this.board['a2']['player'] && this.board['a3']['player']) || (this.board['b2']['player'] && this.board['c2']['player']))) {
+      return true
+    } else {
+      return false
+    }
+  } else if (this.board['a2']['player'] !== 'c') {
+    if (this.board['a2']['player'] === (this.board['b2']['player'] && this.board['c2']['player'])) {
+      return true
+    } else {
+      return false
+    }
+  } else if (this.board['a3']['player'] !== 'c') {
+    if (this.board['a3']['player'] === ((this.board['b2']['player'] && this.board['c1']['player']) || (this.board['b3']['player'] && this.board['c3']['player']))) {
+      return true
+    } else {
+      return false
+    }
+  } else if (this.board['b1']['player'] !== 'c') {
+    if (this.board['b1']['player'] === (this.board['b2']['player'] && this.board['b3']['player'])) {
+      return true
+    } else {
+      return false
+    }
+  } else if (this.board['c1']['player'] !== 'c') {
+    if (this.board['c1']['player'] === (this.board['c2']['player'] && this.board['c3']['player'])) {
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
+
 // maybe make a check win button? 
 TicTacToe.prototype._checkWin = function () {
-  if (this.board['a1']['player'] === ((this.board['b1']['player'] && this.board['c1']['player']) || (this.board['a2']['player'] && this.board['a3']['player']) || (this.board['b2']['player'] && this.board['c2']['player']))) {
+  if (this.board['a1']['player'] === ((this.board['b1']['player'] && this.board['c1']['player']) || 
+    (this.board['a2']['player'] && this.board['a3']['player']) || 
+    (this.board['b2']['player'] && this.board['c2']['player']))) {
     return true
   } else if (this.board['a2']['player'] === (this.board['b2']['player'] && this.board['c2']['player'])) {
     return true
@@ -78,5 +117,7 @@ TicTacToe.prototype._checkWin = function () {
     return true
   } else if (this.board['c1']['player'] === (this.board['c2']['player'] && this.board['c3']['player'])) {
     return true
+  } else {
+    return false
   }
 }
