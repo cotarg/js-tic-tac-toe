@@ -70,19 +70,9 @@ TicTacToe.prototype._updatePlayer = function (spaceAddress) {
   }
 }
 
-TicTacToe.prototype.checkWin = function () {
-  if (this.turns < 5) { return false }
 
-  for (var set of this.wins) {
-    for (var space of set) {
-      if (this.playerOne.indexOf(space) >= 0) {
-        return true
-      } else {
-        return false
-      }
-    }
-  }
-}
+
+// var isSuperset = arr2.every(function(val) { return arr1.indexOf(val) >= 0; })
 
 // TicTacToe.prototype.checkWin = function () {
 //   if (this.turns < 5) {
